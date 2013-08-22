@@ -1,0 +1,65 @@
+From ec7f288204e42c2aed4fd98dc7a884952198dab7 Mon Sep 17 00:00:00 2001
+From: James <jialei.james@gmail.com>
+Date: Thu, 22 Aug 2013 16:44:10 +0800
+Subject: [PATCH] Adding configuration files for bluetooth mensa.
+
+Change-Id: Ie49ebda43c9f3fb2f0e8ad769a7ce224e2880415
+---
+ conf/ingenic/mensa/Android.mk     |   14 ++++++++++++++
+ conf/ingenic/mensa/bt_vendor.conf |    6 ++++++
+ include/vnd_mensa.txt             |    8 ++++++++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 conf/ingenic/mensa/Android.mk
+ create mode 100644 conf/ingenic/mensa/bt_vendor.conf
+ create mode 100644 include/vnd_mensa.txt
+
+diff --git a/conf/ingenic/mensa/Android.mk b/conf/ingenic/mensa/Android.mk
+new file mode 100644
+index 0000000..974e213
+--- /dev/null
++++ b/conf/ingenic/mensa/Android.mk
+@@ -0,0 +1,14 @@
++LOCAL_PATH := $(call my-dir)
++
++include $(CLEAR_VARS)
++
++LOCAL_MODULE := bt_vendor.conf
++LOCAL_MODULE_CLASS := ETC
++LOCAL_MODULE_PATH := $(TARGET_OUT)/etc/bluetooth
++
++LOCAL_MODULE_TAGS := eng
++
++LOCAL_SRC_FILES := $(LOCAL_MODULE)
++
++include $(BUILD_PREBUILT)
++
+diff --git a/conf/ingenic/mensa/bt_vendor.conf b/conf/ingenic/mensa/bt_vendor.conf
+new file mode 100644
+index 0000000..bfe69ca
+--- /dev/null
++++ b/conf/ingenic/mensa/bt_vendor.conf
+@@ -0,0 +1,6 @@
++# UART device port where Bluetooth controller is attached
++UartPort = /dev/ttyS2
++
++# Firmware patch file location
++FwPatchFilePath = /etc/firmware/bcm4330/
++FwPatchFileName = BCM4330.hcd
+\ No newline at end of file
+diff --git a/include/vnd_mensa.txt b/include/vnd_mensa.txt
+new file mode 100644
+index 0000000..206e7da
+--- /dev/null
++++ b/include/vnd_mensa.txt
+@@ -0,0 +1,8 @@
++BLUETOOTH_UART_DEVICE_PORT = "/dev/ttyS0"
++FW_PATCHFILE_LOCATION = "/etc/firmware/bcm4330/"
++LPM_IDLE_TIMEOUT_MULTIPLE = 5
++BTVND_DBG = FALSE
++BTHW_DBG = TRUE
++VNDUSERIAL_DBG = FALSE
++UPIO_DBG = FALSE
++UART_TARGET_BAUD_RATE = 3000000
+-- 
+1.7.9.5
+
